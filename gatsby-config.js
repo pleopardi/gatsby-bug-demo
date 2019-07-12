@@ -1,77 +1,62 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    author: "Paolo Leopardi",
+    description: "An amazing blog for tourists",
     social: {
-      twitter: `kylemathews`,
+      twitter: `PaoloLeopardi`,
     },
+    title: "Viaticum Blog",
   },
   plugins: [
-    `gatsby-plugin-feed`,
-    `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+    "gatsby-plugin-offline",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: "gatsby-plugin-google-analytics",
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        //trackingId: "ADD YOUR TRACKING ID HERE",
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-mdx",
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        defaultLayouts: {
+          blog: require.resolve("./src/components/Layout.js"),
+        },
+        gatsbyRemarkPlugins: [{ resolve: `gatsby-remark-images` }],
       },
     },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: "gatsby-plugin-manifest",
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        name: "Gatsby Starter Blog",
+        short_name: "GatsbyJS",
+        start_url: "/",
+        background_color: "#ffffff",
+        theme_color: "#663399",
+        display: "minimal-ui",
+        icon: "content/assets/gatsby-icon.png",
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-plugin-typography",
       options: {
+        pathToConfigModule: "src/utils/typography",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "assets",
         path: `${__dirname}/content/assets`,
-        name: `assets`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
+        name: "blog",
         path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-smartypants`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-        ],
       },
     },
   ],
