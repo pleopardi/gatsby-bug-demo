@@ -1,26 +1,18 @@
 const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPost = path.resolve(`./src/templates/Post.template.js`);
+  const PostTemplate = path.resolve(`./src/templates/Post.template.js`);
 
   return graphql(
     `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
+      query {
+        allMdx {
+          nodes {
+            frontmatter {
+              slug
+              title
             }
           }
         }
@@ -32,37 +24,23 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allMdx.nodes;
 
     posts.forEach((post, index) => {
+      const next = index === 0 ? null : posts[index - 1].frontmatter;
       const previous =
-        index === posts.length - 1 ? null : posts[index + 1].node;
-      const next = index === 0 ? null : posts[index - 1].node;
+        index === posts.length - 1 ? null : posts[index + 1].frontmatter;
+      const slug = post.frontmatter.slug;
 
       createPage({
-        path: post.node.fields.slug,
-        component: blogPost,
+        path: slug,
+        component: PostTemplate,
         context: {
-          slug: post.node.fields.slug,
-          previous,
           next,
+          previous,
+          slug,
         },
       });
     });
-
-    return null;
   });
-};
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
-  }
 };
