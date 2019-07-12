@@ -8,6 +8,7 @@ module.exports = {
     title: "Viaticum Blog",
   },
   plugins: [
+    "gatsby-plugin-emotion",
     "gatsby-plugin-offline",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
