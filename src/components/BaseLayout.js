@@ -6,23 +6,17 @@ const styles = {
   global: {
     "*, *::after, *::before": {
       boxSizing: "inherit",
-      margin: 0,
-      padding: 0,
     },
-
     body: {
       boxSizing: "border-box",
     },
-    "h1, h2, h3, h4, h5, h6, p": {
-      margin: "1rem 0",
+    "article, body, div, h1, h2, h3, h4, h5, h6, p, span": {
+      margin: 0,
       padding: 0,
     },
     html: {
       MozOsxFontSmoothing: "grayscale",
       WebkitFontSmoothing: "antialiased",
-    },
-    "strong, b": {
-      fontWeight: "bolder",
     },
   },
 };
