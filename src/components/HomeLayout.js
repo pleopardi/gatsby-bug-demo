@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 const styles = {
   wrapper: {
-    h3: {
-      marginBottom: "1rem",
-      marginTop: "1rem",
-    },
-    p: {
-      marginBottom: "0.5rem",
-      marginTop: "0.5rem",
+    width: "100%",
+    maxWidth: "60rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    padding: "1rem",
+
+    "h3,p": {
+      marginTop: "1.2rem",
     },
   },
 };
