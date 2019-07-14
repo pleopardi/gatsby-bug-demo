@@ -31,7 +31,7 @@ function Post({ post }) {
     <div>
       <Link to={to}>
         <div css={styles.imageWrapper}>
-          <Image alt={title} css={styles.image} fluid={image.sharp.fluid} />
+          <Image alt={title} fluid={image.sharp.fluid} />
         </div>
       </Link>
       <StyledLink to={to}>
