@@ -22,10 +22,7 @@ module.exports = {
     {
       resolve: "gatsby-mdx",
       options: {
-        defaultLayouts: {
-          blog: require.resolve("./src/components/Layout.js"),
-        },
-        gatsbyRemarkPlugins: [{ resolve: `gatsby-remark-images` }],
+        gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
       },
     },
     {
@@ -58,6 +55,16 @@ module.exports = {
       options: {
         name: "blog",
         path: `${__dirname}/content/blog`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+          },
+        ],
       },
     },
   ],
