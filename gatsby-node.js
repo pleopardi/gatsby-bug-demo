@@ -1,14 +1,14 @@
-const path = require(`path`);
+const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const PostTemplate = path.resolve(`./src/templates/Post.template.js`);
+  const PostTemplate = path.resolve("./src/templates/Post.template.js");
 
   return graphql(
     `
       query {
-        allMdx {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           nodes {
             frontmatter {
               slug
@@ -23,7 +23,6 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
 
-    // Create blog posts pages.
     const posts = result.data.allMdx.nodes;
 
     posts.forEach((post, index) => {
@@ -33,13 +32,13 @@ exports.createPages = ({ graphql, actions }) => {
       const slug = post.frontmatter.slug;
 
       createPage({
-        path: slug,
         component: PostTemplate,
         context: {
           next,
           previous,
           slug,
         },
+        path: slug,
       });
     });
   });

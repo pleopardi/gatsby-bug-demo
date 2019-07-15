@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import SEO from "../components/Seo";
+import BaseLayout from "../components/BaseLayout";
+import Seo from "../components/common/Seo";
 
 class NotFoundPage extends React.Component {
   render() {
@@ -9,11 +9,11 @@ class NotFoundPage extends React.Component {
     const siteTitle = data.site.siteMetadata.title;
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="404: Not Found" />
+      <BaseLayout location={this.props.location} title={siteTitle}>
+        <Seo title="404: Not Found" />
         <h1>Not Found</h1>
         <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      </Layout>
+      </BaseLayout>
     );
   }
 }
