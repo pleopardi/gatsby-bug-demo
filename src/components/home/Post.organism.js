@@ -7,7 +7,6 @@ import StyledLink from "../common/StyledLink.atom";
 const styles = {
   details: {
     fontSize: "0.8rem",
-    fontWeight: "bold",
   },
   imageWrapper: {
     borderRadius: "0.4rem",
