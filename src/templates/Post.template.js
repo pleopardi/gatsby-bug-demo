@@ -1,77 +1,77 @@
-import React, { Component } from "react";
-import { graphql, Link } from "gatsby";
+import React, { Fragment } from "react";
+import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-mdx";
-import Bio from "../components/Bio";
-import Layout from "../components/Layout";
-import SEO from "../components/Seo";
-import { rhythm, scale } from "../utils/typography";
+import BaseLayout from "../components/BaseLayout";
+import Footer from "../components/common/Footer.atom";
+import PostLayout from "../components/PostLayout";
+import Seo from "../components/common/Seo";
+import Spacer from "../components/common/Spacer.atom";
+import StyledLink from "../components/common/StyledLink.atom";
 
-class PostTemplate extends Component {
-  render() {
-    const post = this.props.data.mdx;
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const { next, previous } = this.props.pageContext;
+const styles = {
+  authorWrapper: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginRight: "2rem",
+  },
+  navWrapper: {
+    marginBottom: "0.6rem",
+    marginTop: "0.6rem",
+    display: `flex`,
+    flexWrap: `nowrap`,
+    justifyContent: `space-between`,
+  },
+  subtitle: {
+    fontSize: "0.8rem",
+  },
+};
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <h1
-          style={{
-            marginTop: rhythm(1),
-            marginBottom: 0,
-          }}
-        >
-          {post.frontmatter.title}
-        </h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div>
-          <MDXRenderer>{post.code.body}</MDXRenderer>
-        </div>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`/${previous.slug}`} rel="prev">
-                ← {previous.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={`/${next.slug}`} rel="next">
-                {next.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Layout>
-    );
-  }
+function PostTemplate({ data, pageContext }) {
+  const { body } = data.mdx.code;
+  const { author, date, description, title } = data.mdx.frontmatter;
+  const { next, previous } = pageContext;
+  const { title: siteTitle } = data.site.siteMetadata;
+
+  return (
+    <Fragment>
+      <Seo description={description} title={title} />
+      <BaseLayout>
+        <PostLayout>
+          <Fragment>
+            <header>
+              <StyledLink to="/">
+                <h3>{siteTitle}</h3>
+              </StyledLink>
+            </header>
+            <h1>{title}</h1>
+            <p css={styles.subtitle}>
+              {dateTimeFormatter.format(new Date(date))}, {author}
+            </p>
+            <Spacer height="1rem" />
+            <MDXRenderer>{body}</MDXRenderer>
+            <Spacer height="4rem" />
+            <hr />
+            <div css={styles.navWrapper}>
+              {previous && (
+                <StyledLink to={`/${previous.slug}`} rel="prev">
+                  ← {previous.title}
+                </StyledLink>
+              )}
+
+              {next && (
+                <StyledLink to={`/${next.slug}`} rel="next">
+                  {next.title} →
+                </StyledLink>
+              )}
+            </div>
+            <Footer />
+          </Fragment>
+        </PostLayout>
+      </BaseLayout>
+    </Fragment>
+  );
 }
 
 export default PostTemplate;
@@ -80,9 +80,10 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+        author
+        date
         description
+        title
       }
       code {
         body
