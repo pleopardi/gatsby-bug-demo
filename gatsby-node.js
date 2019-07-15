@@ -32,13 +32,13 @@ exports.createPages = ({ graphql, actions }) => {
       const slug = post.frontmatter.slug;
 
       createPage({
-        path: slug,
         component: PostTemplate,
         context: {
           next,
           previous,
           slug,
         },
+        path: slug,
       });
     });
   });
