@@ -62,7 +62,7 @@ function Seo({ description, lang, meta, title }) {
       }}
       meta={metaArray}
       title={title}
-      titleTemplate={"%s | ${site.siteMetadata.title}"}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
     />
   );
 }
