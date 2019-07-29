@@ -20,12 +20,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-mdx",
-      options: {
-        gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
-      },
-    },
-    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "Gatsby Starter Blog",
@@ -38,9 +32,9 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-typography",
+      resolve: "gatsby-plugin-mdx",
       options: {
-        pathToConfigModule: "src/utils/typography",
+        gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
       },
     },
     {

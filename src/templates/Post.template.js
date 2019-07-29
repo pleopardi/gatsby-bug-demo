@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-mdx";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 import BaseLayout from "../components/BaseLayout";
 import Footer from "../components/common/Footer.atom";
 import PostLayout from "../components/PostLayout";
@@ -29,8 +29,8 @@ const styles = {
 const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
 function PostTemplate({ data, pageContext }) {
-  const { body } = data.mdx.code;
   const { author, date, description, title } = data.mdx.frontmatter;
+  const { body } = data.mdx;
   const { next, previous } = pageContext;
   const { title: siteTitle } = data.site.siteMetadata;
 
@@ -85,9 +85,7 @@ export const pageQuery = graphql`
         description
         title
       }
-      code {
-        body
-      }
+      body
     }
     site {
       siteMetadata {
