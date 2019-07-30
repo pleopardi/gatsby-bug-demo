@@ -9,23 +9,19 @@ const styles = {
     marginRight: "auto",
     padding: "1rem",
 
-    h1: {
+    "h1, h2": {
       marginBottom: "1.2rem",
       marginTop: "1.2rem",
     },
-    "h2, h3, h4, h5, h6": {
+    "h3, h4, h5, h6, p": {
       marginBottom: "0.8rem",
       marginTop: "0.8rem",
-    },
-    p: {
-      marginBottom: "0.6rem",
-      marginTop: "0.6rem",
     },
   },
 };
 
 function HomeLayout({ children }) {
-  return <main css={styles.wrapper}>{children}</main>;
+  return <div css={styles.wrapper}>{children}</div>;
 }
 
 HomeLayout.propTypes = {
