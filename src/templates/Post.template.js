@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
@@ -55,15 +55,15 @@ function PostTemplate({ data, pageContext }) {
           <hr />
           <div css={styles.navWrapper}>
             {previous && (
-              <StyledLink to={`/${previous.slug}`} rel="prev">
+              <Link to={`/${previous.slug}`} rel="prev">
                 ← {previous.title}
-              </StyledLink>
+              </Link>
             )}
 
             {next && (
-              <StyledLink to={`/${next.slug}`} rel="next">
+              <Link to={`/${next.slug}`} rel="next">
                 {next.title} →
-              </StyledLink>
+              </Link>
             )}
           </div>
           <Footer />
