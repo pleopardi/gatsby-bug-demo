@@ -22,9 +22,18 @@ const styles = {
       margin: 0,
       padding: 0,
     },
+    h1: {
+      fontWeight: 500,
+    },
+    "h2, h3, h4, h5, h6": {
+      fontWeight: 600,
+    },
     html: {
       MozOsxFontSmoothing: "grayscale",
       WebkitFontSmoothing: "antialiased",
+    },
+    p: {
+      lineHeight: "1.6rem",
     },
   },
 };
