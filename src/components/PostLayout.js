@@ -26,7 +26,7 @@ const styles = {
 };
 
 function PostLayout({ children }) {
-  return <main css={styles.wrapper}>{children}</main>;
+  return <div css={styles.wrapper}>{children}</div>;
 }
 
 PostLayout.propTypes = {
