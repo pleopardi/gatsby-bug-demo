@@ -6,6 +6,14 @@ const styles = {
     "*, *::after, *::before": {
       boxSizing: "inherit",
     },
+    a: {
+      boxShadow: "none",
+      textDecoration: "none",
+    },
+    "a:focus, a:hover": {
+      textDecoration: "underline",
+      textUnderlinePosition: "under",
+    },
     body: {
       boxSizing: "border-box",
       fontFamily: "Montserrat, sans-serif",
