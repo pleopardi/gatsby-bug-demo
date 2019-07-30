@@ -22,19 +22,27 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Gatsby Starter Blog",
-        short_name: "GatsbyJS",
-        start_url: "/",
         background_color: "#ffffff",
-        theme_color: "#663399",
         display: "minimal-ui",
-        icon: "content/assets/gatsby-icon.png",
+        icon: "content/assets/icon.svg",
+        name: "Viaticum Blog",
+        short_name: "Viaticum",
+        start_url: "/",
+        theme_color: "#71151a",
       },
     },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
     {
