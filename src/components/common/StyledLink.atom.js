@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 
 const StyledLink = styled(Link)`
   box-shadow: none;
-  color: black;
+  color: inherit;
+  text-decoration: none;
 `;
 
 export default StyledLink;
