@@ -3,7 +3,7 @@ module.exports = {
     author: "Paolo Leopardi",
     description: "An amazing blog for tourists",
     social: {
-      twitter: `PaoloLeopardi`,
+      twitter: "PaoloLeopardi",
     },
     title: "Viaticum Blog",
   },
@@ -38,6 +38,19 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-webfonts",
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Montserrat",
+              variants: ["400", "500", "600"],
+            },
+          ],
+        },
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
@@ -52,11 +65,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
           },
         ],
       },
