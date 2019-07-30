@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Global } from "@emotion/core";
 
 const styles = {
@@ -9,6 +8,7 @@ const styles = {
     },
     body: {
       boxSizing: "border-box",
+      fontFamily: "Montserrat, sans-serif",
     },
     "h1, h2, h3, h4, h5, h6, hr, img, p": {
       margin: 0,
@@ -21,17 +21,8 @@ const styles = {
   },
 };
 
-function BaseLayout({ children }) {
-  return (
-    <Fragment>
-      <Global styles={styles.global}></Global>
-      {children}
-    </Fragment>
-  );
+function CssBaseline() {
+  return <Global styles={styles.global} />;
 }
 
-BaseLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default BaseLayout;
+export default CssBaseline;

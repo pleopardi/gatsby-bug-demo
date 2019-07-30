@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
-import BaseLayout from "../components/BaseLayout";
+import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
 import HomeLayout from "../components/HomeLayout";
 import Post from "../components/home/Post.organism";
@@ -17,22 +17,21 @@ function BlogIndex({ data }) {
   return (
     <Fragment>
       <Seo lang="it" title="Articoli del blog" />
-      <BaseLayout>
-        <HomeLayout>
-          <header>
-            <StyledLink to="/">
-              <h1>{siteTitle}</h1>
-            </StyledLink>
-          </header>
-          <Post post={firstPost} />
-          <Spacer height="4rem" />
-          <hr />
-          <Spacer height="4.6rem" />
-          <PostList posts={otherPosts} />
-          <Spacer height="4rem" />
-          <Footer />
-        </HomeLayout>
-      </BaseLayout>
+      <CssBaseline />
+      <HomeLayout>
+        <header>
+          <StyledLink to="/">
+            <h1>{siteTitle}</h1>
+          </StyledLink>
+        </header>
+        <Post post={firstPost} />
+        <Spacer height="4rem" />
+        <hr />
+        <Spacer height="4.6rem" />
+        <PostList posts={otherPosts} />
+        <Spacer height="4rem" />
+        <Footer />
+      </HomeLayout>
     </Fragment>
   );
 }

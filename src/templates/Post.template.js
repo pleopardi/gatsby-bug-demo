@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import BaseLayout from "../components/BaseLayout";
+import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
 import PostLayout from "../components/PostLayout";
 import Seo from "../components/common/Seo";
@@ -17,9 +17,9 @@ const styles = {
   navWrapper: {
     marginBottom: "0.6rem",
     marginTop: "0.6rem",
-    display: `flex`,
-    flexWrap: `nowrap`,
-    justifyContent: `space-between`,
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-between",
   },
   subtitle: {
     fontSize: "0.8rem",
@@ -37,39 +37,38 @@ function PostTemplate({ data, pageContext }) {
   return (
     <Fragment>
       <Seo description={description} title={title} />
-      <BaseLayout>
-        <PostLayout>
-          <Fragment>
-            <header>
-              <StyledLink to="/">
-                <h3>{siteTitle}</h3>
+      <CssBaseline />
+      <PostLayout>
+        <Fragment>
+          <header>
+            <StyledLink to="/">
+              <h3>{siteTitle}</h3>
+            </StyledLink>
+          </header>
+          <h1>{title}</h1>
+          <p css={styles.subtitle}>
+            {dateTimeFormatter.format(new Date(date))}, {author}
+          </p>
+          <Spacer height="1rem" />
+          <MDXRenderer>{body}</MDXRenderer>
+          <Spacer height="4rem" />
+          <hr />
+          <div css={styles.navWrapper}>
+            {previous && (
+              <StyledLink to={`/${previous.slug}`} rel="prev">
+                ← {previous.title}
               </StyledLink>
-            </header>
-            <h1>{title}</h1>
-            <p css={styles.subtitle}>
-              {dateTimeFormatter.format(new Date(date))}, {author}
-            </p>
-            <Spacer height="1rem" />
-            <MDXRenderer>{body}</MDXRenderer>
-            <Spacer height="4rem" />
-            <hr />
-            <div css={styles.navWrapper}>
-              {previous && (
-                <StyledLink to={`/${previous.slug}`} rel="prev">
-                  ← {previous.title}
-                </StyledLink>
-              )}
+            )}
 
-              {next && (
-                <StyledLink to={`/${next.slug}`} rel="next">
-                  {next.title} →
-                </StyledLink>
-              )}
-            </div>
-            <Footer />
-          </Fragment>
-        </PostLayout>
-      </BaseLayout>
+            {next && (
+              <StyledLink to={`/${next.slug}`} rel="next">
+                {next.title} →
+              </StyledLink>
+            )}
+          </div>
+          <Footer />
+        </Fragment>
+      </PostLayout>
     </Fragment>
   );
 }
