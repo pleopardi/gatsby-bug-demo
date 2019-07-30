@@ -22,9 +22,6 @@ const styles = {
       marginBottom: "0.6rem",
       marginTop: "0.6rem",
     },
-    ul: {
-      listStyle: "none",
-    },
   },
 };
 
