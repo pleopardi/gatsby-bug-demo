@@ -9,10 +9,16 @@ import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
 
 const styles = {
-  authorWrapper: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginRight: "2rem",
+  details: {
+    fontSize: "0.9rem",
+    fontWeight: 600,
+  },
+  home: {
+    fontSize: 20,
+    fontWeight: 600,
+  },
+  homeLink: {
+    color: "inherit",
   },
   navWrapper: {
     marginBottom: "0.6rem",
@@ -20,9 +26,6 @@ const styles = {
     display: "flex",
     flexWrap: "nowrap",
     justifyContent: "space-between",
-  },
-  subtitle: {
-    fontSize: "0.8rem",
   },
 };
 
@@ -40,32 +43,36 @@ function PostTemplate({ data, pageContext }) {
       <CssBaseline />
       <PostLayout>
         <Fragment>
-          <header>
-            <StyledLink to="/">
-              <h3>{siteTitle}</h3>
+          <nav>
+            <StyledLink style={styles.homeLink} to="/">
+              <p style={styles.home}>{siteTitle}</p>
             </StyledLink>
+          </nav>
+          <header>
+            <h1>{title}</h1>
+            <p css={styles.details}>
+              {dateTimeFormatter.format(new Date(date))}, {author}
+            </p>
           </header>
-          <h1>{title}</h1>
-          <p css={styles.subtitle}>
-            {dateTimeFormatter.format(new Date(date))}, {author}
-          </p>
-          <Spacer height="1rem" />
-          <MDXRenderer>{body}</MDXRenderer>
-          <Spacer height="4rem" />
+          <article>
+            <MDXRenderer>{body}</MDXRenderer>
+          </article>
+          <Spacer height="3rem" />
           <hr />
-          <div css={styles.navWrapper}>
-            {previous && (
+          <nav css={styles.navWrapper}>
+            {previous ? (
               <Link to={`/${previous.slug}`} rel="prev">
                 ← {previous.title}
               </Link>
+            ) : (
+              <span />
             )}
-
             {next && (
               <Link to={`/${next.slug}`} rel="next">
                 {next.title} →
               </Link>
             )}
-          </div>
+          </nav>
           <Footer />
         </Fragment>
       </PostLayout>
