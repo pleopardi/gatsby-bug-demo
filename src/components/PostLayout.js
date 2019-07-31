@@ -16,7 +16,9 @@ const styles = {
       fontWeight: 500,
     },
     blockquote: {
+      borderLeft: "0.25rem solid #71151a",
       fontStyle: "italic",
+      paddingLeft: "1rem",
     },
     h1: {
       fontWeight: 600,
