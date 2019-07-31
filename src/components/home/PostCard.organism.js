@@ -18,7 +18,7 @@ const styles = {
 
 const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
-function Post({ post }) {
+function PostCard({ post }) {
   const { author, date, description, image, slug, title } = post.frontmatter;
 
   const formattedDate = dateTimeFormatter.format(new Date(date));
@@ -43,7 +43,7 @@ function Post({ post }) {
   );
 }
 
-Post.propTypes = {
+PostCard.propTypes = {
   post: PropTypes.shape({
     frontmatter: PropTypes.shape({
       author: PropTypes.string.isRequired,
@@ -57,4 +57,4 @@ Post.propTypes = {
   }).isRequired,
 };
 
-export default Post;
+export default PostCard;

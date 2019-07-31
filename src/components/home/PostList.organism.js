@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Post from "./Post.organism";
+import PostCard from "./PostCard.organism";
 
 const styles = {
   wrapper: {
@@ -15,7 +15,7 @@ function PostList({ posts }) {
   return (
     <div css={styles.wrapper}>
       {posts.map(post => (
-        <Post key={post.frontmatter.slug} post={post} />
+        <PostCard key={post.frontmatter.slug} post={post} />
       ))}
     </div>
   );

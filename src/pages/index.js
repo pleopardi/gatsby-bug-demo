@@ -4,7 +4,7 @@ import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
 import HomeLayout from "../components/HomeLayout";
 import Logo from "../../content/assets/logo.svg";
-import Post from "../components/home/Post.organism";
+import PostCard from "../components/home/PostCard.organism";
 import PostList from "../components/home/PostList.organism";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
@@ -43,7 +43,7 @@ function BlogIndex({ data }) {
           </StyledLink>
         </header>
         <main>
-          <Post post={firstPost} style={{ marginBottom: 0 }} />
+          <PostCard post={firstPost} style={{ marginBottom: 0 }} />
           <Spacer height="4rem" />
           <hr />
           <Spacer height="4rem" />
