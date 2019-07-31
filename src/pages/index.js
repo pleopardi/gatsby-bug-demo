@@ -5,7 +5,7 @@ import Footer from "../components/common/Footer.atom";
 import HomeLayout from "../components/HomeLayout";
 import Logo from "../../content/assets/logo.svg";
 import PostCard from "../components/home/PostCard.organism";
-import PostList from "../components/home/PostList.organism";
+import PostsList from "../components/home/PostsList.organism";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
@@ -47,7 +47,7 @@ function BlogIndex({ data }) {
           <Spacer height="4rem" />
           <hr />
           <Spacer height="4rem" />
-          <PostList posts={otherPosts} />
+          <PostsList posts={otherPosts} />
         </main>
         <Spacer height="4rem" />
         <Footer />
