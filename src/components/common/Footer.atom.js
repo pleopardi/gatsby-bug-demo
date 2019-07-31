@@ -10,7 +10,9 @@ const styles = {
 };
 
 function Footer() {
-  return <footer css={styles.footer}>© {new Date().getFullYear()}</footer>;
+  return (
+    <footer css={styles.footer}>© {new Date().getFullYear()} Viaticum</footer>
+  );
 }
 
 export default Footer;
