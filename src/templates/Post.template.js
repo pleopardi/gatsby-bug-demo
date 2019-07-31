@@ -9,10 +9,6 @@ import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
 
 const styles = {
-  details: {
-    fontSize: "0.9rem",
-    fontWeight: 600,
-  },
   home: {
     fontSize: 20,
     fontWeight: 600,
@@ -26,6 +22,11 @@ const styles = {
     display: "flex",
     flexWrap: "nowrap",
     justifyContent: "space-between",
+  },
+  postDetails: {
+    fontSize: "0.9rem",
+    fontWeight: 600,
+    marginTop: "0.8rem",
   },
 };
 
@@ -50,7 +51,7 @@ function PostTemplate({ data, pageContext }) {
           </nav>
           <header>
             <h1>{title}</h1>
-            <p css={styles.details}>
+            <p style={styles.postDetails}>
               {dateTimeFormatter.format(new Date(date))}, {author}
             </p>
           </header>
