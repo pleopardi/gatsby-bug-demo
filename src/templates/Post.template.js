@@ -74,6 +74,7 @@ function PostTemplate({ data, pageContext }) {
               </Link>
             )}
           </nav>
+          <Spacer height="2rem" />
           <Footer />
         </Fragment>
       </PostLayout>
