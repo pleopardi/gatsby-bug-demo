@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     author: "Paolo Leopardi",
-    description: "An amazing blog for tourists",
+    description: "Il blog per il turista curioso",
     social: {
       twitter: "PaoloLeopardi",
     },
