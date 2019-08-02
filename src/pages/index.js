@@ -32,7 +32,11 @@ function BlogIndex({ data }) {
 
   return (
     <Fragment>
-      <Seo lang="it" title="Home" />
+      <Seo
+        description="La home di Viaticum, coi post recenti e quelli in vetrina."
+        lang="it"
+        title="Home"
+      />
       <CssBaseline />
       <HomeLayout>
         <header css={styles.header}>
