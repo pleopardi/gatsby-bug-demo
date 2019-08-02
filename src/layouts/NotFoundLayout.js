@@ -9,27 +9,27 @@ const styles = {
     marginRight: "auto",
     padding: "1rem",
 
+    a: {
+      color: "#71151a",
+      fontWeight: 500,
+    },
     h1: {
       marginBottom: "1.2rem",
       marginTop: "1.2rem",
     },
-    "h2, h3, h4, h5, h6": {
+    p: {
       marginBottom: "0.8rem",
       marginTop: "0.8rem",
-    },
-    p: {
-      marginBottom: "0.6rem",
-      marginTop: "0.6rem",
     },
   },
 };
 
-function HomeLayout({ children }) {
-  return <main css={styles.wrapper}>{children}</main>;
+function NotFoundLayout({ children }) {
+  return <div css={styles.wrapper}>{children}</div>;
 }
 
-HomeLayout.propTypes = {
+NotFoundLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default HomeLayout;
+export default NotFoundLayout;

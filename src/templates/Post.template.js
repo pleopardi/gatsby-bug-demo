@@ -1,75 +1,83 @@
 import React, { Fragment } from "react";
-import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-mdx";
-import BaseLayout from "../components/BaseLayout";
+import { graphql, Link } from "gatsby";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
-import PostLayout from "../components/PostLayout";
+import PostLayout from "../layouts/PostLayout";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
 
 const styles = {
-  authorWrapper: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginRight: "2rem",
+  home: {
+    fontSize: 20,
+    fontWeight: 600,
+  },
+  homeLink: {
+    color: "inherit",
   },
   navWrapper: {
     marginBottom: "0.6rem",
     marginTop: "0.6rem",
-    display: `flex`,
-    flexWrap: `nowrap`,
-    justifyContent: `space-between`,
+    display: "flex",
+    flexWrap: "nowrap",
+    justifyContent: "space-between",
   },
-  subtitle: {
-    fontSize: "0.8rem",
+  postDetails: {
+    fontSize: "0.9rem",
+    fontWeight: 600,
+    marginTop: "0.8rem",
   },
 };
 
 const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
 function PostTemplate({ data, pageContext }) {
-  const { body } = data.mdx.code;
   const { author, date, description, title } = data.mdx.frontmatter;
+  const { body } = data.mdx;
   const { next, previous } = pageContext;
   const { title: siteTitle } = data.site.siteMetadata;
 
   return (
     <Fragment>
       <Seo description={description} title={title} />
-      <BaseLayout>
-        <PostLayout>
-          <Fragment>
-            <header>
-              <StyledLink to="/">
-                <h3>{siteTitle}</h3>
-              </StyledLink>
-            </header>
+      <CssBaseline />
+      <PostLayout>
+        <Fragment>
+          <nav>
+            <StyledLink style={styles.homeLink} to="/">
+              <p style={styles.home}>{siteTitle}</p>
+            </StyledLink>
+          </nav>
+          <header>
             <h1>{title}</h1>
-            <p css={styles.subtitle}>
+            <p style={styles.postDetails}>
               {dateTimeFormatter.format(new Date(date))}, {author}
             </p>
-            <Spacer height="1rem" />
+          </header>
+          <article>
             <MDXRenderer>{body}</MDXRenderer>
-            <Spacer height="4rem" />
-            <hr />
-            <div css={styles.navWrapper}>
-              {previous && (
-                <StyledLink to={`/${previous.slug}`} rel="prev">
-                  ← {previous.title}
-                </StyledLink>
-              )}
-
-              {next && (
-                <StyledLink to={`/${next.slug}`} rel="next">
-                  {next.title} →
-                </StyledLink>
-              )}
-            </div>
-            <Footer />
-          </Fragment>
-        </PostLayout>
-      </BaseLayout>
+          </article>
+          <Spacer height="3rem" />
+          <hr />
+          <nav css={styles.navWrapper}>
+            {previous ? (
+              <Link to={`/${previous.slug}`} rel="prev">
+                ← {previous.title}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {next && (
+              <Link to={`/${next.slug}`} rel="next">
+                {next.title} →
+              </Link>
+            )}
+          </nav>
+          <Spacer height="4rem" />
+          <Footer />
+        </Fragment>
+      </PostLayout>
     </Fragment>
   );
 }
@@ -85,9 +93,7 @@ export const pageQuery = graphql`
         description
         title
       }
-      code {
-        body
-      }
+      body
     }
     site {
       siteMetadata {

@@ -1,38 +1,61 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
-import BaseLayout from "../components/BaseLayout";
+import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
-import HomeLayout from "../components/HomeLayout";
-import Post from "../components/home/Post.organism";
-import PostList from "../components/home/PostList.organism";
+import HomeLayout from "../layouts/HomeLayout";
+import Logo from "../../content/assets/logo.svg";
+import PostCard from "../components/home/PostCard.organism";
+import PostsList from "../components/home/PostsList.organism";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
 
+const styles = {
+  blogTitleLink: {
+    textDecoration: "none",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "2.4rem",
+  },
+  logo: {
+    height: "4rem",
+    width: "4rem",
+  },
+};
+
 function BlogIndex({ data }) {
-  const siteTitle = data.site.siteMetadata.title;
   const firstPost = data.firstPost.nodes[0];
   const otherPosts = data.otherPosts.nodes;
+  const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Fragment>
-      <Seo lang="it" title="Articoli del blog" />
-      <BaseLayout>
-        <HomeLayout>
-          <header>
-            <StyledLink to="/">
-              <h1>{siteTitle}</h1>
-            </StyledLink>
-          </header>
-          <Post post={firstPost} />
+      <Seo
+        description="La home di Viaticum, coi post recenti e quelli in vetrina."
+        lang="it"
+        title="Home"
+      />
+      <CssBaseline />
+      <HomeLayout>
+        <header css={styles.header}>
+          <Logo css={styles.logo} />
+          <Spacer width="1rem" />
+          <StyledLink style={styles.blogTitleLink} to="/">
+            <h1>{siteTitle}</h1>
+          </StyledLink>
+        </header>
+        <main>
+          <PostCard post={firstPost} style={{ marginBottom: 0 }} />
           <Spacer height="4rem" />
           <hr />
-          <Spacer height="4.6rem" />
-          <PostList posts={otherPosts} />
           <Spacer height="4rem" />
-          <Footer />
-        </HomeLayout>
-      </BaseLayout>
+          <PostsList posts={otherPosts} />
+        </main>
+        <Spacer height="4rem" />
+        <Footer />
+      </HomeLayout>
     </Fragment>
   );
 }
@@ -92,11 +115,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-/*
-
-/ <Layout location={this.props.location} title={siteTitle}>
-      // <SEO title="All posts" />
-      // <Bio />
-
-*/

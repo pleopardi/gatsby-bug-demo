@@ -1,10 +1,7 @@
 module.exports = {
   siteMetadata: {
-    author: "Paolo Leopardi",
-    description: "An amazing blog for tourists",
-    social: {
-      twitter: `PaoloLeopardi`,
-    },
+    author: "Cristina Antonini, Paolo Leopardi",
+    description: "Il blog per turisti curiosi",
     title: "Viaticum Blog",
   },
   plugins: [
@@ -20,27 +17,42 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-mdx",
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        background_color: "#ffffff",
+        display: "minimal-ui",
+        icon: "content/assets/icon.svg",
+        name: "Viaticum Blog",
+        short_name: "Viaticum Blog",
+        start_url: "/",
+        theme_color: "#71151a",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mdx",
       options: {
         gatsbyRemarkPlugins: [{ resolve: "gatsby-remark-images" }],
       },
     },
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        name: "Gatsby Starter Blog",
-        short_name: "GatsbyJS",
-        start_url: "/",
-        background_color: "#ffffff",
-        theme_color: "#663399",
-        display: "minimal-ui",
-        icon: "content/assets/gatsby-icon.png",
+        rule: {
+          include: /assets/,
+        },
       },
     },
     {
-      resolve: "gatsby-plugin-typography",
+      resolve: "gatsby-plugin-webfonts",
       options: {
-        pathToConfigModule: "src/utils/typography",
+        fonts: {
+          google: [
+            {
+              family: "Montserrat",
+              variants: ["400", "500", "600"],
+            },
+          ],
+        },
       },
     },
     {
@@ -58,11 +70,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: "gatsby-remark-images",
           },
         ],
       },

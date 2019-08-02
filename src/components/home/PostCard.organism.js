@@ -6,20 +6,19 @@ import StyledLink from "../common/StyledLink.atom";
 
 const styles = {
   details: {
-    fontSize: "0.8rem",
+    fontSize: "0.9rem",
+    fontWeight: 600,
+    marginBottom: 0,
   },
   imageWrapper: {
     borderRadius: "0.4rem",
     overflow: "hidden",
   },
-  text: {
-    textAlign: "justify",
-  },
 };
 
 const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
-function Post({ post }) {
+function PostCard({ post }) {
   const { author, date, description, image, slug, title } = post.frontmatter;
 
   const formattedDate = dateTimeFormatter.format(new Date(date));
@@ -27,26 +26,24 @@ function Post({ post }) {
   const to = `/${slug}`;
 
   return (
-    <div>
+    <article>
       <Link to={to}>
         <div css={styles.imageWrapper}>
           <Image alt={title} fluid={image.sharp.fluid} />
         </div>
       </Link>
       <StyledLink to={to}>
-        <h3 css={styles.text}>{title}</h3>
+        <h2>{title}</h2>
       </StyledLink>
-      <StyledLink to={to}>
-        <p css={styles.text}>{description}</p>
-      </StyledLink>
-      <p css={{ ...styles.details, ...styles.text }}>
+      <p>{description}</p>
+      <p style={styles.details}>
         {formattedDate} - {author}
       </p>
-    </div>
+    </article>
   );
 }
 
-Post.propTypes = {
+PostCard.propTypes = {
   post: PropTypes.shape({
     frontmatter: PropTypes.shape({
       author: PropTypes.string.isRequired,
@@ -60,4 +57,4 @@ Post.propTypes = {
   }).isRequired,
 };
 
-export default Post;
+export default PostCard;
