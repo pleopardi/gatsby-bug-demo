@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const styles = {
   wrapper: {
     width: "100%",
-    maxWidth: "60rem",
+    maxWidth: "40rem",
     marginLeft: "auto",
     marginRight: "auto",
     padding: "1rem",
