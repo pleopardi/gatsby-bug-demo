@@ -1,10 +1,7 @@
 module.exports = {
   siteMetadata: {
-    author: "Paolo Leopardi",
-    description: "Il blog per il turista curioso",
-    social: {
-      twitter: "PaoloLeopardi",
-    },
+    author: "Cristina Antonini, Paolo Leopardi",
+    description: "Il blog per turisti curiosi",
     title: "Viaticum Blog",
   },
   plugins: [
@@ -26,7 +23,7 @@ module.exports = {
         display: "minimal-ui",
         icon: "content/assets/icon.svg",
         name: "Viaticum Blog",
-        short_name: "Viaticum",
+        short_name: "Viaticum Blog",
         start_url: "/",
         theme_color: "#71151a",
       },
