@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
-import PostLayout from "../components/PostLayout";
+import PostLayout from "../layouts/PostLayout";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
 import StyledLink from "../components/common/StyledLink.atom";
