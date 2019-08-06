@@ -64,7 +64,7 @@ function CookieBanner() {
   }
 
   if (isCookieAvailable) {
-    return null;
+    return <div />;
   }
 
   return (
