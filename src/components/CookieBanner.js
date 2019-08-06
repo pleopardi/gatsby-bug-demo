@@ -34,8 +34,12 @@ const styles = {
   buttonWrapper: {
     flex: "1 1 5rem",
     padding: "0.5rem 0",
+    cursor: "pointer",
     display: "flex",
     justifyContent: "center",
+  },
+  externalWrapper: {
+    width: "100%",
   },
   textWrapper: {
     flex: "5 1 25rem",
@@ -63,17 +67,23 @@ function CookieBanner() {
     setPrivacyCookie();
   }
 
+  if (typeof window === "undefined") {
+    return <div />;
+  }
+
   if (isCookieAvailable) {
     return <div />;
   }
 
   return (
-    <div css={styles.bannerWrapper}>
-      <div css={styles.bannerContentWrapper}>
-        <p css={styles.textWrapper}>{text}</p>
-        <div css={styles.buttonWrapper}>
-          <div css={styles.button} onClick={onClick}>
-            OK
+    <div css={styles.externalWrapper}>
+      <div css={styles.bannerWrapper}>
+        <div css={styles.bannerContentWrapper}>
+          <p css={styles.textWrapper}>{text}</p>
+          <div css={styles.buttonWrapper}>
+            <p css={styles.button} onClick={onClick}>
+              OK
+            </p>
           </div>
         </div>
       </div>
