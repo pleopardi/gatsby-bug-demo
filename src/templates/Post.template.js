@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
 import PostLayout from "../layouts/PostLayout";
@@ -42,6 +43,7 @@ function PostTemplate({ data, pageContext }) {
     <Fragment>
       <Seo description={description} title={title} />
       <CssBaseline />
+      <CookieBanner />
       <PostLayout>
         <Fragment>
           <nav>

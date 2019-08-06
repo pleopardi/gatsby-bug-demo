@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { graphql } from "gatsby";
+import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer.atom";
 import HomeLayout from "../layouts/HomeLayout";
@@ -38,6 +39,7 @@ function BlogIndex({ data }) {
         title="Home"
       />
       <CssBaseline />
+      <CookieBanner />
       <HomeLayout>
         <header css={styles.header}>
           <Logo css={styles.logo} />
