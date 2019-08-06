@@ -25,14 +25,14 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-remark": "^2.6.10",
     "gatsby-transformer-sharp": "^2.2.5",
-    "pretty-quick": "^1.11.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "husky": "^3.0.2",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
   },
   "keywords": [
     "viaticum",
