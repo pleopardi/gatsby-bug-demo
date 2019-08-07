@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const COOKIE_NAME = "displayCookieNotice";
 const COOKIE_VALUE = "y";
 const text =
-  "Questo sito utilizza cookie di Google per analizzare il traffico. Il tuo indirizzo IP e il tuo agente utente sono condivisi con Google, unitamente alle metriche sulle prestazioni e sulla sicurezza, per garantire la qualità del servizio e generare statistiche di utilizzo.";
+  "Questo sito utilizza cookie di Google per analizzare il traffico. Il tuo indirizzo IP e il tuo agente utente sono condivisi con Google, unitamente alle metriche sulle prestazioni, per garantire la qualità del servizio e generare statistiche di utilizzo.";
 
 const styles = {
   bannerContentWrapper: {
