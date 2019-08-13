@@ -70,6 +70,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "intl",
+        path: `${__dirname}/content/intl`,
+      },
+    },
+    {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
