@@ -2,14 +2,11 @@ import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
-import Footer from "../components/common/Footer";
+import { Footer, Seo, Spacer, StyledLink } from "../components/common";
 import HomeLayout from "../layouts/HomeLayout";
 import Logo from "../../content/assets/logo.svg";
 import PostCard from "../components/home/PostCard.organism";
 import PostsList from "../components/home/PostsList.organism";
-import Seo from "../components/common/Seo";
-import Spacer from "../components/common/Spacer";
-import StyledLink from "../components/common/StyledLink";
 
 const styles = {
   blogTitleLink: {

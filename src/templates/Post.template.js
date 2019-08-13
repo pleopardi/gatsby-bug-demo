@@ -3,11 +3,8 @@ import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
-import Footer from "../components/common/Footer";
+import { Footer, Seo, Spacer, StyledLink } from "../components/common";
 import PostLayout from "../layouts/PostLayout";
-import Seo from "../components/common/Seo";
-import Spacer from "../components/common/Spacer";
-import StyledLink from "../components/common/StyledLink";
 
 const styles = {
   home: {

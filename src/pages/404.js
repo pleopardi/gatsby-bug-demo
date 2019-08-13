@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
 import NotFoundLayout from "../layouts/NotFoundLayout";
-import Seo from "../components/common/Seo";
+import { Seo } from "../components/common";
 
 class NotFoundPage extends React.Component {
   render() {
