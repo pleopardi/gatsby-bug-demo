@@ -1,4 +1,5 @@
 const path = require("path");
+const { getSlugFromFilePath } = require("./helpers");
 
 function createPages({ actions, graphql }) {
   const { createPage } = actions;
@@ -44,6 +45,17 @@ function createPages({ actions, graphql }) {
   });
 }
 
+function onCreateNode({ actions, node }) {
+  if (node.internal.type === "Mdx") {
+    actions.createNodeField({
+      node,
+      name: "slug",
+      value: getSlugFromFilePath(node.fileAbsolutePath),
+    });
+  }
+}
+
 module.exports = {
   createPages,
+  onCreateNode,
 };
