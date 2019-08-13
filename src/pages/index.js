@@ -68,6 +68,9 @@ export const pageQuery = graphql`
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           author
           date
@@ -79,7 +82,6 @@ export const pageQuery = graphql`
               }
             }
           }
-          slug
           tags
           title
         }
@@ -90,6 +92,9 @@ export const pageQuery = graphql`
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           author
           date
@@ -101,7 +106,6 @@ export const pageQuery = graphql`
               }
             }
           }
-          slug
           tags
           title
         }

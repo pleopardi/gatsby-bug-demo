@@ -33,7 +33,7 @@ const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 function PostTemplate({ data, pageContext }) {
   const { author, date, description, title } = data.mdx.frontmatter;
   const { body } = data.mdx;
-  const { next, previous } = pageContext;
+  const { next, nextTitle, previous, previousTitle } = pageContext;
   const { title: siteTitle } = data.site.siteMetadata;
 
   return (
@@ -61,15 +61,15 @@ function PostTemplate({ data, pageContext }) {
           <hr />
           <nav css={styles.navWrapper}>
             {previous ? (
-              <Link to={`/${previous.slug}`} rel="prev">
-                ← {previous.title}
+              <Link to={`/${previous}`} rel="prev">
+                ← {previousTitle}
               </Link>
             ) : (
               <span />
             )}
             {next && (
-              <Link to={`/${next.slug}`} rel="next">
-                {next.title} →
+              <Link to={`/${next}`} rel="next">
+                {nextTitle} →
               </Link>
             )}
           </nav>
@@ -85,7 +85,7 @@ export default PostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         author
         date

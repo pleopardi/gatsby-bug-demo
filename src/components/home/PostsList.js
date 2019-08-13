@@ -24,12 +24,14 @@ function PostList({ posts }) {
 PostList.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
+      fields: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+      }).isRequired,
       frontmatter: PropTypes.shape({
         author: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         image: PropTypes.object.isRequired,
-        slug: PropTypes.string.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
         title: PropTypes.string.isRequired,
       }).isRequired,

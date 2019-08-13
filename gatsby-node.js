@@ -11,8 +11,10 @@ function createPages({ actions, graphql }) {
       query {
         allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           nodes {
-            frontmatter {
+            fields {
               slug
+            }
+            frontmatter {
               title
             }
           }
@@ -27,16 +29,26 @@ function createPages({ actions, graphql }) {
     const posts = result.data.allMdx.nodes;
 
     posts.forEach((post, index) => {
-      const next = index === 0 ? null : posts[index - 1].frontmatter;
+      const next = index === 0 ? null : posts[index - 1].fields.slug;
+
+      const nextTitle = next ? posts[index - 1].frontmatter.title : null;
+
       const previous =
-        index === posts.length - 1 ? null : posts[index + 1].frontmatter;
-      const slug = post.frontmatter.slug;
+        index === posts.length - 1 ? null : posts[index + 1].fields.slug;
+
+      const previousTitle = previous
+        ? posts[index + 1].frontmatter.title
+        : null;
+
+      const slug = post.fields.slug;
 
       createPage({
         component: PostTemplate,
         context: {
           next,
+          nextTitle,
           previous,
+          previousTitle,
           slug,
         },
         path: slug,
@@ -48,8 +60,8 @@ function createPages({ actions, graphql }) {
 function onCreateNode({ actions, node }) {
   if (node.internal.type === "Mdx") {
     actions.createNodeField({
-      node,
       name: "slug",
+      node,
       value: getSlugFromFilePath(node.fileAbsolutePath),
     });
   }

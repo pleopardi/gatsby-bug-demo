@@ -19,7 +19,8 @@ const styles = {
 const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
 
 function PostCard({ post }) {
-  const { author, date, description, image, slug, title } = post.frontmatter;
+  const { author, date, description, image, title } = post.frontmatter;
+  const { slug } = post.fields;
 
   const formattedDate = dateTimeFormatter.format(new Date(date));
 
@@ -45,12 +46,14 @@ function PostCard({ post }) {
 
 PostCard.propTypes = {
   post: PropTypes.shape({
+    fields: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
     frontmatter: PropTypes.shape({
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       image: PropTypes.object.isRequired,
-      slug: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       title: PropTypes.string.isRequired,
     }).isRequired,
