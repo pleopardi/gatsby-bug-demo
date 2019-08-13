@@ -6,7 +6,7 @@ import CssBaseline from "../components/CssBaseline";
 import Footer from "../components/common/Footer";
 import PostLayout from "../layouts/PostLayout";
 import Seo from "../components/common/Seo";
-import Spacer from "../components/common/Spacer.atom";
+import Spacer from "../components/common/Spacer";
 import StyledLink from "../components/common/StyledLink.atom";
 
 const styles = {
