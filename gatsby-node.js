@@ -1,5 +1,6 @@
 const path = require("path");
-const { getSlugFromFilePath } = require("./helpers");
+const { config } = require("./content/intl/config");
+const { getLocalizedPath, getSlugFromFilePath } = require("./helpers");
 
 function createPages({ actions, graphql }) {
   const { createPage } = actions;
@@ -67,7 +68,24 @@ function onCreateNode({ actions, node }) {
   }
 }
 
+function onCreatePage({ actions, page }) {
+  const { createPage, deletePage } = actions;
+
+  deletePage(page);
+
+  config.locales.forEach(locale => {
+    createPage({
+      ...page,
+      path: getLocalizedPath({
+        locale,
+        path: page.path,
+      }),
+    });
+  });
+}
+
 module.exports = {
   createPages,
   onCreateNode,
+  onCreatePage,
 };
