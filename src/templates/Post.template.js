@@ -28,8 +28,6 @@ const styles = {
   },
 };
 
-const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
-
 function PostTemplate({ data, pageContext }) {
   const { author, date, description, title } = data.mdx.frontmatter;
   const { body } = data.mdx;
@@ -51,7 +49,7 @@ function PostTemplate({ data, pageContext }) {
           <header>
             <h1>{title}</h1>
             <p style={styles.postDetails}>
-              {dateTimeFormatter.format(new Date(date))}, {author}
+              {date}, {author}
             </p>
           </header>
           <article>
@@ -88,7 +86,7 @@ export const pageQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         author
-        date
+        date(formatString: "DD/MM/YYYY")
         description
         title
       }
