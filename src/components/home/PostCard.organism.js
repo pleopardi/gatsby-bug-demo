@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Image from "gatsby-image";
 import { Link } from "gatsby";
-import StyledLink from "../common/StyledLink.atom";
+import StyledLink from "../common/StyledLink";
 
 const styles = {
   details: {

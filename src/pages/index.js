@@ -9,7 +9,7 @@ import PostCard from "../components/home/PostCard.organism";
 import PostsList from "../components/home/PostsList.organism";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer";
-import StyledLink from "../components/common/StyledLink.atom";
+import StyledLink from "../components/common/StyledLink";
 
 const styles = {
   blogTitleLink: {

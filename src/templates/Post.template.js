@@ -7,7 +7,7 @@ import Footer from "../components/common/Footer";
 import PostLayout from "../layouts/PostLayout";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer";
-import StyledLink from "../components/common/StyledLink.atom";
+import StyledLink from "../components/common/StyledLink";
 
 const styles = {
   home: {
