@@ -5,7 +5,7 @@ import CssBaseline from "../components/CssBaseline";
 import { Footer, Seo, Spacer, StyledLink } from "../components/common";
 import HomeLayout from "../layouts/HomeLayout";
 import Logo from "../../content/assets/logo.svg";
-import PostCard from "../components/home/PostCard.organism";
+import PostCard from "../components/home/PostCard";
 import PostsList from "../components/home/PostsList.organism";
 
 const styles = {
