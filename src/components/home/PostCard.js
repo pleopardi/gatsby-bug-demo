@@ -16,13 +16,9 @@ const styles = {
   },
 };
 
-const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
-
 function PostCard({ post }) {
   const { author, date, description, image, title } = post.frontmatter;
   const { slug } = post.fields;
-
-  const formattedDate = dateTimeFormatter.format(new Date(date));
 
   const to = `/${slug}`;
 
@@ -38,7 +34,7 @@ function PostCard({ post }) {
       </StyledLink>
       <p>{description}</p>
       <p style={styles.details}>
-        {formattedDate} - {author}
+        {date} - {author}
       </p>
     </article>
   );
