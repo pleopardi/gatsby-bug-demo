@@ -73,7 +73,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           author
-          date
+          date(formatString: "DD/MM/YYYY")
           description
           image {
             sharp: childImageSharp {
@@ -97,7 +97,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           author
-          date
+          date(formatString: "DD/MM/YYYY")
           description
           image {
             sharp: childImageSharp {
