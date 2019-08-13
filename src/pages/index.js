@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { graphql } from "gatsby";
 import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
-import Footer from "../components/common/Footer.atom";
+import Footer from "../components/common/Footer";
 import HomeLayout from "../layouts/HomeLayout";
 import Logo from "../../content/assets/logo.svg";
 import PostCard from "../components/home/PostCard.organism";

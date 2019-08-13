@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import CookieBanner from "../components/CookieBanner";
 import CssBaseline from "../components/CssBaseline";
-import Footer from "../components/common/Footer.atom";
+import Footer from "../components/common/Footer";
 import PostLayout from "../layouts/PostLayout";
 import Seo from "../components/common/Seo";
 import Spacer from "../components/common/Spacer.atom";
