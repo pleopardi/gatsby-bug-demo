@@ -62,8 +62,9 @@ function BlogIndex({ data }) {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($dateFormat: String!) {
+  query($dateFormat: String!, $locale: String!) {
     firstPost: allMdx(
+      filter: { fields: { locale: { eq: $locale } } }
       limit: 1
       sort: { fields: frontmatter___date, order: DESC }
     ) {
@@ -88,6 +89,7 @@ export const pageQuery = graphql`
       }
     }
     otherPosts: allMdx(
+      filter: { fields: { locale: { eq: $locale } } }
       skip: 1
       sort: { fields: frontmatter___date, order: DESC }
     ) {
