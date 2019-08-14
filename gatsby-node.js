@@ -1,6 +1,10 @@
 const path = require("path");
 const { config, localesConfig } = require("./content/intl/config");
-const { getLocalizedPath, getSlugFromFilePath } = require("./helpers");
+const {
+  getLocalizedPath,
+  getSlugFromFilePath,
+  removeTrailingSlashFromPath,
+} = require("./helpers");
 
 function createPages({ actions, graphql }) {
   const { createPage } = actions;
@@ -81,10 +85,12 @@ function onCreatePage({ actions, page }) {
         ...page.context,
         dateFormat: localesConfig.it.dateFormat,
       },
-      path: getLocalizedPath({
-        locale,
-        path: page.path,
-      }),
+      path: removeTrailingSlashFromPath(
+        getLocalizedPath({
+          locale,
+          path: page.path,
+        })
+      ),
     });
   });
 }
