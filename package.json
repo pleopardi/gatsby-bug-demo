@@ -47,6 +47,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "prod": "yarn build && yarn serve",
+    "prod:test": "yarn clean && yarn build && yarn build && yarn serve",
     "serve": "gatsby serve",
     "start": "yarn develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
