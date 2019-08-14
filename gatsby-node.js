@@ -89,6 +89,7 @@ function onCreatePage({ actions, page }) {
       context: {
         ...page.context,
         dateFormat: localesConfig.it.dateFormat,
+        locale,
       },
       path: removeTrailingSlashFromPath(
         getLocalizedPath({
