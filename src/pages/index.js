@@ -62,7 +62,7 @@ function BlogIndex({ data, pageContext }) {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query getPageData($dateFormat: String!, $locale: String!) {
+  query getHomeData($dateFormat: String!, $locale: String!) {
     firstPost: allMdx(
       filter: { fields: { locale: { eq: $locale } } }
       limit: 1
