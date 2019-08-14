@@ -1,6 +1,7 @@
 const path = require("path");
 const { config, localesConfig } = require("./content/intl/config");
 const {
+  getLocaleFromFilePath,
   getLocalizedPath,
   getSlugFromFilePath,
   removeTrailingSlashFromPath,
@@ -65,6 +66,12 @@ function createPages({ actions, graphql }) {
 
 function onCreateNode({ actions, node }) {
   if (node.internal.type === "Mdx") {
+    actions.createNodeField({
+      name: "locale",
+      node,
+      value: getLocaleFromFilePath(node.fileAbsolutePath),
+    });
+
     actions.createNodeField({
       name: "slug",
       node,
