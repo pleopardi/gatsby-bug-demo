@@ -23,18 +23,16 @@ const styles = {
   },
 };
 
-function BlogIndex({ data }) {
+function BlogIndex({ data, pageContext }) {
+  const locale = pageContext.locale;
   const firstPost = data.firstPost.nodes[0];
+  const { description } = data.translations.nodes[0].messages[locale];
   const otherPosts = data.otherPosts.nodes;
   const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Fragment>
-      <Seo
-        description="La home di Viaticum, coi post recenti e quelli in vetrina."
-        lang="it"
-        title="Home"
-      />
+      <Seo description={description} lang={locale} title="Home" />
       <CssBaseline />
       <CookieBanner />
       <HomeLayout>
@@ -59,10 +57,12 @@ function BlogIndex({ data }) {
   );
 }
 
+// TODO: add propTypes
+
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($dateFormat: String!, $locale: String!) {
+  query getPageData($dateFormat: String!, $locale: String!) {
     firstPost: allMdx(
       filter: { fields: { locale: { eq: $locale } } }
       limit: 1
@@ -116,6 +116,24 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    translations: allFile(
+      filter: {
+        extension: { eq: "json" }
+        name: { eq: "index" }
+        sourceInstanceName: { eq: "intl" }
+      }
+    ) {
+      nodes {
+        messages: childTranslationsJson {
+          en {
+            description
+          }
+          it {
+            description
+          }
+        }
       }
     }
   }
