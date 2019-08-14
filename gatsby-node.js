@@ -1,5 +1,5 @@
 const path = require("path");
-const { config } = require("./content/intl/config");
+const { config, localesConfig } = require("./content/intl/config");
 const { getLocalizedPath, getSlugFromFilePath } = require("./helpers");
 
 function createPages({ actions, graphql }) {
@@ -46,6 +46,7 @@ function createPages({ actions, graphql }) {
       createPage({
         component: PostTemplate,
         context: {
+          dateFormat: localesConfig.it.dateFormat,
           next,
           nextTitle,
           previous,
@@ -76,6 +77,10 @@ function onCreatePage({ actions, page }) {
   config.locales.forEach(locale => {
     createPage({
       ...page,
+      context: {
+        ...page.context,
+        dateFormat: localesConfig.it.dateFormat,
+      },
       path: getLocalizedPath({
         locale,
         path: page.path,
