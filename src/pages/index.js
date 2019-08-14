@@ -62,7 +62,7 @@ function BlogIndex({ data }) {
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query($dateFormat: String!) {
     firstPost: allMdx(
       limit: 1
       sort: { fields: frontmatter___date, order: DESC }
@@ -73,7 +73,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           author
-          date(formatString: "DD/MM/YYYY")
+          date(formatString: $dateFormat)
           description
           image {
             sharp: childImageSharp {
@@ -97,7 +97,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           author
-          date(formatString: "DD/MM/YYYY")
+          date(formatString: $dateFormat)
           description
           image {
             sharp: childImageSharp {
