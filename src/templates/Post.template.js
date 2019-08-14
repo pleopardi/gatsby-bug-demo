@@ -82,11 +82,11 @@ function PostTemplate({ data, pageContext }) {
 export default PostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($dateFormat: String!, $slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         author
-        date(formatString: "DD/MM/YYYY")
+        date(formatString: $dateFormat)
         description
         title
       }
