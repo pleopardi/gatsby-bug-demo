@@ -9,6 +9,7 @@ module.exports = {
     "gatsby-plugin-offline",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
+    "gatsby-transformer-json",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-google-analytics",
@@ -67,6 +68,13 @@ module.exports = {
       options: {
         name: "blog",
         path: `${__dirname}/content/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "intl",
+        path: `${__dirname}/content/intl`,
       },
     },
     {

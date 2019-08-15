@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Image from "gatsby-image";
 import { Link } from "gatsby";
-import StyledLink from "../common/StyledLink.atom";
+import { StyledLink } from "../common";
 
 const styles = {
   details: {
@@ -16,12 +16,9 @@ const styles = {
   },
 };
 
-const dateTimeFormatter = new Intl.DateTimeFormat("it-IT");
-
 function PostCard({ post }) {
-  const { author, date, description, image, slug, title } = post.frontmatter;
-
-  const formattedDate = dateTimeFormatter.format(new Date(date));
+  const { author, date, description, image, title } = post.frontmatter;
+  const { slug } = post.fields;
 
   const to = `/${slug}`;
 
@@ -37,7 +34,7 @@ function PostCard({ post }) {
       </StyledLink>
       <p>{description}</p>
       <p style={styles.details}>
-        {formattedDate} - {author}
+        {date} - {author}
       </p>
     </article>
   );
@@ -45,12 +42,14 @@ function PostCard({ post }) {
 
 PostCard.propTypes = {
   post: PropTypes.shape({
+    fields: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+    }).isRequired,
     frontmatter: PropTypes.shape({
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       image: PropTypes.object.isRequired,
-      slug: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       title: PropTypes.string.isRequired,
     }).isRequired,
