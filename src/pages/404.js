@@ -31,7 +31,7 @@ export const pageQuery = graphql`
     translations: allFile(
       filter: {
         extension: { eq: "json" }
-        name: { eq: "notFound" }
+        name: { eq: "404" }
         sourceInstanceName: { eq: "intl" }
       }
     ) {
